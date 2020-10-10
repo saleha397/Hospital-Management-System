@@ -1,0 +1,1867 @@
+//////////////////////////////////////////////////////////////////////
+//                 HOSPITAL MANAGEMENT SYSTEM                       //
+//////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////
+//			HEADER FILES			   //
+/////////////////////////////////////////
+
+#include <typeinfo>
+#include<iostream>
+#include<string>
+#include<fstream>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<conio.h>
+#include<limits>
+#include <stdexcept>
+#include<ctime>
+
+using namespace std;
+ifstream in;
+ofstream out;
+
+template<class Item>	//Template Function for records operations
+void records();      
+void add()           //OUTPUT MANIPULATION 
+{
+	system("CLS");
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                                    _      ______  ______                              |##\n"
+		<<"\t\t\t\t\t##|                                   / \\    |  __  \\|  __  \\                             |##\n"
+		<<"\t\t\t\t\t##|                                  / _ \\   | |  |  | |  |  |                            |##\n"
+		<<"\t\t\t\t\t##|                                 / / \\ \\  | |  |  | |  |  |                            |##\n"
+		<<"\t\t\t\t\t##|                                / /___\\ \\ | |__|  | |__|  |                            |##\n"
+		<<"\t\t\t\t\t##|                               /_/     \\_\\|______/|______/                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n";
+}
+void _delete()		//OUTPUT MANIPULATION
+{
+	system("CLS");
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                       ______  ______ _      ______ _________ _                        |##\n"
+		<<"\t\t\t\t\t##|                      |  __  \\|  ____| |    |  ____|____ ____| |                       |##\n"
+		<<"\t\t\t\t\t##|                      | |  |  | |__  | |    | |__      | |   | |                       |##\n"
+		<<"\t\t\t\t\t##|                      | |  |  |  __| | |    |  __|     | |   | |                       |##\n"
+		<<"\t\t\t\t\t##|                      | |__|  | |____| |____| |____    | |   | |____                   |##\n"
+		<<"\t\t\t\t\t##|                      |______/|______|______|______|   |_|   |______|                  |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n";
+}
+void update()		//OUTPUT MANIPULATION
+{
+	system("CLS");
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                     _    _ ______  ______       _     _________ ______                |##\n"
+		<<"\t\t\t\t\t##|                    | |  | |  __  \\|  __  \\     / \\   |_________|  ____|               |##\n"
+		<<"\t\t\t\t\t##|                    | |  | | |__)  | |  |  |   / _ \\      | |   | |__                  |##\n"
+		<<"\t\t\t\t\t##|                    | |  | |  ____/| |  |  |  / /_\\ \\     | |   |  __|                 |##\n"
+		<<"\t\t\t\t\t##|                    | |__| | |     | |__|  | / _____ \\    | |   | |____                |##\n"
+		<<"\t\t\t\t\t##|                     \\____/|_|     |______/ /_/     \\_\\   |_|   |______|               |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n";
+}
+void search()		//OUTPUT MANIPULATION
+{
+	system("CLS");
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                      ______ ______     _      ______   ______  _    _                 |##\n"
+		<<"\t\t\t\t\t##|                     / _____|  ____|   / \\    |  __  \\ /  ____/| |  | |                |##\n"
+		<<"\t\t\t\t\t##|                    | (____ | |__     / _ \\   | |__)  |  |     | |__| |                |##\n"
+		<<"\t\t\t\t\t##|                     \\____ \\|  __|   / /_\\ \\  |  __  /|  |     |  __  |                |##\n"
+		<<"\t\t\t\t\t##|                     _____) | |____ / _____ \\ | |  \\ \\|  |____ | |  | |                |##\n"
+		<<"\t\t\t\t\t##|                    |______/|______/_/     \\_\\|_|   \\_\\_______\\|_|  |_|                |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n";
+}
+void view()			//OUTPUT MANIPULATION
+{
+	system("CLS");
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                             _         _ _______ ______ _    _                         |##\n"
+		<<"\t\t\t\t\t##|                            \\ \\      / /|___ ___|  ____| |  | |                        |##\n"
+		<<"\t\t\t\t\t##|                             \\ \\    / /    | |  | |__  | |  | |                        |##\n"
+		<<"\t\t\t\t\t##|                              \\ \\  / /     | |  |  __| | |/\\| |                        |##\n"
+		<<"\t\t\t\t\t##|                               \\ \\/ /    __| |__| |____| /  \\ |                        |##\n"
+		<<"\t\t\t\t\t##|                                \\__/    |_______|______|__/\\__|                        |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n";
+}
+int stoi(string& s)   //Function to convert string into integer
+{
+	int temp=0;
+	stringstream ss(s);
+	ss>>temp;
+	return(temp);
+}
+class Date
+{
+private:
+	int day;
+	int month;
+	int year;
+public:
+	Date ()
+	{
+		day=0;
+		month=0;
+		year=0;
+	}
+	Date (int Day,int Month,int Year)
+	{
+		setDate(Day,Month,Year);
+	}
+	void setDay(int day)
+	{
+		if(day>0&&day<=30)
+	{
+		this->day=day;
+	}
+	else
+		this->day=0;
+	}
+	void setMonth(int month)
+	{
+		if(month>0&&month<=12)
+		{
+			this->month=month;
+		}
+		else
+		{
+			this->month=0;
+		}
+	}
+	void setYear(int year)
+	{
+		if(year>0)
+		{
+			this->year=year;
+		}
+		else
+		{
+			this->year=0;
+		}
+	}
+	void setDate(int day,int month,int year)
+	{
+		setDay(day);
+		setMonth(month);
+		setYear(year);
+	}
+	int getDay()
+	{
+		return (this->day);
+	}
+	int getMonth()
+	{ 
+		return (this->month);
+	}
+	int getYear()
+	{
+		return (this->year);
+	}
+	void read(ifstream& in)
+	{
+		string my,temp;
+		getline(in,my,',');
+		stringstream ss(my);
+		getline(ss,temp,'/');
+		this->day=stoi(temp);
+		getline(ss,temp,'/');
+		this->month=stoi(temp);
+		getline(ss,temp,'/');
+		this->year=stoi(temp);
+	}
+	bool operator ==(Date& d)const
+	{
+		if(this->day == d.day && this->month == d.month && this->year == d.year)
+		{
+			return true;
+		}
+		return false;
+	}
+	friend ostream& operator << (ostream& myOut , Date& );
+	void inputDate()
+	{
+		bool flag=true;
+		while(flag)
+		{
+			flag=false;
+			try{
+				cout<<"\t\t\t\t\tEnter Day :";
+				cin>>this->day;
+				if (cin.fail()) throw runtime_error("\t\t\t\t\tInput is not an integer\n");
+				cout<<"\t\t\t\t\tEnter Month : ";
+				cin>>this->month;
+				if (cin.fail()) throw runtime_error("\t\t\t\t\tInput is not an integer\n");
+				cout<<"\t\t\t\t\tEnter Year : ";
+				cin>>this->year;
+				if (cin.fail()) throw runtime_error("\t\t\t\t\tInput is not an integer\n");
+			}
+		    catch (const std::runtime_error& e) {
+		        std::cout << e.what();
+		        flag=true;
+		        cin.clear();
+		        cin.ignore();
+		    }
+		}
+	}
+	friend istream& operator >> (istream& I , Date& D);
+};
+ostream& operator << (ostream& O , Date& D)
+{
+	O<<D.getDay()<<"/"<<D.getMonth()<<"/"<<D.getYear();
+	return(O);
+}
+istream& operator >> (istream& I , Date& D)
+{
+	cout<<"Input Day : ";
+	cin>>D.day;
+	cout<<"Input Month : ";
+	cin>>D.month;
+	cout<<"Input Year : ";
+	cin>>D.year; 
+	return(I);
+}
+class Time
+{
+private:
+	int hr;
+	int min;
+	int sec;
+public:
+	Time(int hr=0,int min=0,int sec=0)
+	{
+		setHour(hr);
+		setMin(min);
+		setSec(sec);
+	}
+	Time (const Time &T)
+	{
+		this->hr=T.hr;
+		this->min=T.min;
+		this->sec=T.sec;
+	}
+	void setHour(int hr)
+	{
+		if(hr>0&&hr<=12)
+		{
+			this->hr=hr;
+		}
+		else
+		this->hr=0;
+	}
+	void setMin(int min)
+	{
+		if(min>0&&min<60)
+	{
+		this->min=min;
+	}
+	else 
+		this->min=0;
+	}
+	void setSec(int sec)
+	{
+		if(sec>0&&sec<60)
+		{
+			this->sec=sec;
+		}
+		else 
+		this->sec=0;
+	}
+	int getHour()
+	{
+		return(hr);
+	}
+	int getMin()
+	{
+		return(min);
+	}
+	int getSec()
+	{
+		return(sec);
+	}
+	void read(ifstream& in)
+	{
+		string my,temp;
+		getline(in,my,',');
+		stringstream ss(my);
+		getline(ss,temp,':');
+		this->hr=stoi(temp);
+		getline(ss,temp,':');
+		this->min=stoi(temp);
+		getline(ss,temp,':');
+		this->sec=stoi(temp);
+		
+	}
+	void write(ofstream& out)
+	{
+		out<<this->hr<<":"<<this->min<<":"<<this->sec;
+	}
+	void input()
+	{
+		bool flag=true;
+		while(flag)
+		{
+			flag=false;
+			try{
+				cout<<"\t\t\t\t\tEnter Hours : ";
+				cin>>this->hr;
+				if (cin.fail()) throw runtime_error("\t\t\t\t\tInput is not an integer\n");
+				cout<<"\t\t\t\t\tEnter Minutes : ";
+				cin>>this->min;
+				if (cin.fail()) throw runtime_error("\t\t\t\t\tInput is not an integer\n");
+				this->setSec(0);
+			}
+		    catch (const std::runtime_error& e) {
+		        std::cout << e.what();
+		        flag=true;
+		        cin.clear();
+		        cin.ignore();
+		    }
+		}
+	}
+	bool operator ==(Time& d)const
+	{
+		if(this->hr == d.hr && this->min == d.min && this->sec == d.sec)
+		{
+			return true;
+		}
+		return false;
+	}
+	friend ostream& operator <<(ostream& o,Time &A);
+	friend istream& operator >> (istream& o,Time &A);
+};
+ostream& operator <<(ostream& o,Time &A)
+{
+	o<<A.hr<<":"<<A.min<<":"<<A.sec<<endl;
+	return(o);
+}
+istream& operator >> (istream& o,Time &A)
+{
+	cout<<"Enter Hours : ";
+	cin>>A.hr;
+	cout<<"Enter Minutes : ";
+	cin>>A.min;
+	cout<<"Enter Seconds : ";
+	cin>>A.sec;
+	return(o);
+}
+class Login
+{
+private:
+	string userName;
+	string password;
+public:
+	Login()
+	{
+		this->password = "NULL";
+		this->userName = "NULL";
+	}
+	void setPassword(string password)
+	{
+		this->password = password;
+	}
+	string getPassword()
+	{
+		return (this->password);
+	}
+	void setUserName(string userName)
+	{
+		this->userName=userName;
+	}
+	string getUserName()
+	{
+		return(this->userName);
+	}
+	bool operator == (Login& L)
+	{
+		if( this->userName == L.userName && this->password == L.password)
+		{
+			return(true);
+		}
+		else
+		{
+			return(false);
+		}
+	}
+	void print()
+	{
+		cout<<"\t\t\t\t\tUserName : "<<this->userName<<"\n";
+		cout<<"\t\t\t\t\tPassword : "<<this->password<<"\n";
+	}
+	void read(ifstream& in)
+	{
+		getline(in,this->userName,',');
+		getline(in,this->password,',');
+	}
+	void write(ofstream& out)
+	{
+		out<<this->userName<<",";
+		out<<this->password<<",";
+	}
+	friend ostream& operator << (ostream& O , Login & L);
+	friend istream& operator >> (istream& I , Login & L);
+};
+istream& operator >> (istream& I , Login & L)
+{
+	char temp[6];
+	cout<<"\t\t\t\t\tEnter your username : ";
+	cin.ignore();
+	getline(I,L.userName);
+	cout<<"\t\t\t\t\tEnter your password : ";
+	for(int i=0;i<5;i++)
+	{
+		temp[i]=getch();
+		cout<<"*";
+	}
+	cout<<"\n"; 
+	L.password=temp;
+	return(I);
+}
+ostream& operator << (ostream& O , Login & L)
+{
+	O<<L.userName<<","<<L.password<<",";
+	return(O);
+}
+class Diagnosis{
+	private:
+	string symptom;
+	string medicine;
+	public:
+
+	Diagnosis()
+	{
+		this->medicine="Pending";
+		this->symptom="Pending";
+	}
+	void setSymptom(string s)
+	{
+		this->symptom=s;
+	}
+	void setMedicine(string m)
+	{
+		this->medicine=m;
+	}
+	string getMedicine()
+	{
+		return(this->medicine);
+	}
+	string getSymptom()
+	{
+		return(this->symptom);
+	}
+	void print()
+	{
+		cout<<"\t\t\t\t\tSymptoms :" <<symptom<<endl;
+		cout<<"\t\t\t\t\tMedicine : "<<medicine<<endl;
+	}
+	void input()
+	{
+		cout<<"\t\t\t\t\tInput Symptoms :";
+		getline(cin,this->symptom);
+		cout<<"\t\t\t\t\tInput Medicine : ";
+		getline(cin,this->medicine);
+	}
+};
+class Appointment
+{
+private:
+	int number;
+	string patientID;
+	string doctorName;
+	Date date;
+	Time time;
+public:
+	Diagnosis diagnosis;
+	Appoinment()
+	{
+		number=-1;
+		this->patientID="NULL";
+		this->doctorName="NULL";
+	}
+	void read(ifstream& in)
+	{
+		string temp;
+		//in.write((char*)& *this, sizeof(*this));
+		getline(in,temp,',');
+		this->number=stoi(temp);
+		getline(in,this->patientID,',');
+		getline(in,this->doctorName,',');
+		this->date.read(in);
+		this->time.read(in);
+		getline(in,temp,',');
+		this->diagnosis.setSymptom(temp);
+		getline(in,temp);
+		this->diagnosis.setMedicine(temp);
+	}
+	void input()
+	{
+		string temp;
+		cin.ignore();
+		cout<<"\t\t\t\t\tEnter Appointment Number : ";
+		cin>>number;
+		cout<<"\t\t\t\t\tPatient ID : ";
+		cin>>this->patientID;
+		cin.ignore();
+		cout<<"\t\t\t\t\tDoctor's Name : ";
+		getline(cin,this->doctorName);
+		cout<<"\t\t\t\t\tInput Date | ";
+		this->date.inputDate();
+		cout<<"\t\t\t\t\tInput Time | ";
+		this->time.input();
+	}
+	void printG()
+	{
+		this->print();
+	}
+	void print()
+	{
+		cout<<"\t\t\t\t\tAppointment # ";
+		cout<<number<<endl;
+		cout<<"\t\t\t\t\tPatient's ID : ";
+		cout<<this->patientID<<endl;
+		cout<<"\t\t\t\t\tDoctor Name : ";
+		cout<<this->doctorName<<endl;
+		cout<<"\t\t\t\t\tDate : ";
+		cout<<date<<endl;
+		cout<<"\t\t\t\t\tTime # ";
+		cout<<time;
+		cout<<"\t\t\t\t\t*****************************************************"<<endl;
+	}
+	int searchG(vector<Appointment> &a , string id)
+	{
+		this->number=stoi(id);
+		for(int i=0;i<a.size();i++)
+		{
+			if(a[i].number ==  this->number)
+			{
+				return i;
+			}
+		}
+	}
+	void write(ofstream& out)
+	{
+		out<<number<<",";
+		out<<this->patientID<<",";
+		out<<this->doctorName<<",";
+		out<<date<<",";
+		time.write(out);
+		out<<","<<this->diagnosis.getSymptom()<<",";
+		out<<this->diagnosis.getMedicine();
+		out<<endl;
+	}
+	bool operator >(Appointment& p) const
+	{	
+		if(this->number > p.number)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	bool operator <(Appointment& p) const
+	{	
+		if(this->number < p.number)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	void menu()
+	{
+		short choice;
+		while(true)
+		{
+			cout<<"\t\t\t\t\t1. Handle Appointments\n"
+				<<"\t\t\t\t\t2. Go Back\n"
+				<<"\t\t\t\t\tEnter your choice : ";
+			cin>>choice;
+			switch(choice)
+			{
+				case 1:
+					records<Appointment>();
+					break;
+				case 2:
+					return;
+				default:
+					cout<<"Invalid choice\n";
+			}
+		}
+	}
+};
+
+
+class Person
+{
+private:
+	string fname;
+	string lname;
+	char gender;
+	string bloodGroup;
+	string address;
+	string city;
+	string phoneNumber;
+	string CNIC;
+	char martitialStatus;
+	Date DOB;  //composition
+public:
+	Person()
+	{
+		this->fname="NULL";
+		this->lname="NULL";
+		this->address="NULL";
+		this->gender='N';
+		this->bloodGroup="NULL";
+		this->city="NULL";
+		this->phoneNumber="NULL";
+		this->CNIC="NULL";
+		this->martitialStatus='N';
+	}
+	void setFirstName(string fname)
+	{
+		this->fname=fname;
+	}
+	string getFirstName()
+	{
+		return(this->fname);
+	}
+	void setLastName(string lname)
+	{
+		this->lname=lname;
+	}
+	string getLastName()
+	{
+		return(this->lname);
+	}
+
+	void setGender(char gender)
+	{
+		if(gender == 'm' || gender == 'M' || gender == 'f' || gender == 'F')
+		{
+			this->gender=gender;
+		}
+		else
+		{
+			this->gender='N';
+		}
+	}
+	char getGender()
+	{
+		return(this->gender);
+	}
+	void setBloodGroup(string bloodGroup)
+	{
+		if( bloodGroup == "A+" || bloodGroup == "B+"|| bloodGroup == "A-" || bloodGroup == "B-" ||  bloodGroup == "AB+" || bloodGroup == "AB-" || bloodGroup == "O+" || bloodGroup == "O-")
+		{
+			this->bloodGroup=bloodGroup;
+		}
+		else
+		{
+			this->bloodGroup="NULL";
+		}
+	}
+	string getBloodGroup()
+	{
+		return(this->bloodGroup);
+	}
+	void setAddress(string address)
+	{
+		this->address=address;
+	}
+	string getAddress()
+	{
+		return(this->address);
+	}
+	void setCity(string city)
+	{
+		this->city=city;
+	}
+	string getCity()
+	{
+		return(this->city);
+	}
+	void setCNIC(string CNIC)
+	{
+		this->CNIC=CNIC;
+	}
+	string getCNIC()
+	{
+		return(this->CNIC);
+	}
+	void setPhoneNumber(string phoneNumber)
+	{
+		this->phoneNumber=phoneNumber;
+	}
+	string getPhoneNumber()
+	{
+		return(this->phoneNumber);
+	}
+	void setMartitialStatus(char martitialStatus)
+	{
+		if( martitialStatus == 'u' ||martitialStatus == 'm' ||martitialStatus == 'd' ||martitialStatus == 'M' ||martitialStatus == 'U' ||martitialStatus == 'D')
+		{
+			this->martitialStatus=martitialStatus;
+		}
+		else
+		{
+			this->martitialStatus='N';
+		}
+	}
+	char getMartitialStatus()
+	{
+		return(this->martitialStatus);
+	}
+	bool operator >(Person& p) const
+	{	
+		if(this->fname > p.fname)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	bool operator <(Person& p) const
+	{	
+		if(this->fname < p.fname)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	int calculateAge(Date DOB)
+	{
+		// current date/time based on current system
+	   time_t now = time(0);
+	
+	   tm *ltm = localtime(&now);
+		
+	   // print various components of tm structure.
+	   
+	   return((1900 + ltm->tm_year)-DOB.getYear());
+//	   cout << "Year:" << 1900 + ltm->tm_year << endl;
+//	   cout << "Month: "<< 1 + ltm->tm_mon<< endl;
+//	   cout << "Day: "<<  ltm->tm_mday << endl;
+	}
+	
+	void print()
+	{
+		cout<<"\t\t\t\t\tName : "<<this->getFirstName()<<" ";
+		cout<<this->getLastName()<<endl;
+		cout<<"\t\t\t\t\tAge : "<<this->calculateAge(DOB)<<"\n";
+		cout<<"\t\t\t\t\tGender : ";
+		if(this->getGender() == 'm' || this->getGender() == 'M')
+		{
+			cout<<"Male";
+		}
+		else
+		{
+			cout<<"Female";
+		}
+		cout<<"\n";
+		cout<<"\t\t\t\t\tBlood Group : "<<this->getBloodGroup()<<"\n";
+		cout<<"\t\t\t\t\tAddress : "<<this->getAddress()<<"\n";
+		cout<<"\t\t\t\t\tCity : "<<this->getCity()<<"\n";
+		cout<<"\t\t\t\t\tCNIC : "<<this->getCNIC()<<"\n";
+		cout<<"\t\t\t\t\tPhone Number : "<<this->getPhoneNumber()<<"\n";
+		cout<<"\t\t\t\t\tMarital Status : ";
+		if( martitialStatus == 'u'|| martitialStatus == 'U')
+		{
+			cout<<"Un-married\n";
+		}
+		else if(martitialStatus == 'm' || martitialStatus == 'M' )
+		{
+			cout<<"Married\n";
+		}
+		else
+		{
+			cout<<"Divorced\n";
+		}
+	}
+	void printG()
+	{
+		cout<<getFirstName()<<" ";
+			cout<<getLastName();
+			cout<<"\t\t"<<calculateAge(DOB);
+			cout<<"\t\t";
+			if(getGender() == 'm' || getGender() == 'M')
+			{
+				cout<<"Male";
+			}
+			else
+			{
+				cout<<"Female";
+			}
+			
+			cout<<"\t\t"<<getBloodGroup()<<"\n";
+		cout<<"\t\t\t\t\t***********************************************************************************"<<endl;
+	}
+	void write(ofstream &out)
+	{
+		out<<this->getFirstName()<<",";
+		out<<this->getLastName()<<",";
+		out<<this->DOB<<",";
+		out<<this->getGender()<<",";
+		out<<this->getBloodGroup()<<",";
+		out<<this->getCity()<<",";
+		out<<this->getCNIC()<<",";
+		out<<this->getPhoneNumber()<<",";
+		out<<this->getMartitialStatus()<<",";
+		out<<"\""<<this->getAddress()<<"\",";
+	}
+	
+	void read(ifstream& in)
+	{
+		string temp;
+		getline(in,fname,',');
+		getline(in,lname,',');
+		this->DOB.read(in);
+		getline(in,temp,',');
+		gender=temp[0];
+		getline(in,bloodGroup,',');
+		getline(in,city,',');
+		getline(in,CNIC,',');
+		getline(in,phoneNumber,',');
+		getline(in,temp,',');
+		martitialStatus=temp[0];
+		getline(in,address);
+		address.erase(address.begin()+0);
+		address.erase(address.end()-1);
+		address.erase(address.end()-1);
+	}
+	void input()
+	{
+		cout<<"\t\t\t\t\tEnter First Name : ";
+		getline(cin,fname);
+		cout<<"\t\t\t\t\tEnter Last Name : ";
+		getline(cin,lname);
+		cout<<"\t\t\t\t\tEnter DOB : ";
+		cin>>DOB;
+		cout<<"\t\t\t\t\tEnter Gender (M for Male and F for Female) : ";
+		cin>>gender;
+		cout<<"\t\t\t\t\tEnter Blood Group : ";
+		cin.ignore();
+		getline(cin,bloodGroup);
+		cout<<"\t\t\t\t\tEnter Address : ";
+		getline(cin,address);
+		cout<<"\t\t\t\t\tEnter city : ";
+		getline(cin,city);
+		cout<<"\t\t\t\t\tEnter Phone Number : ";
+		getline(cin,phoneNumber);
+		cout<<"\t\t\t\t\tEnter CNIC : ";
+		getline(cin,CNIC);
+		cout<<"\t\t\t\t\tEnter Martitial Status (M for married, U for unmaried and D for devorced) : ";
+		cin>>martitialStatus;
+	}
+};
+
+class Patient : public Person
+{
+private:
+	string ID;
+	unsigned short wardNumber;
+	unsigned short bedNumber;
+	Date admitDate;
+	
+public:
+	
+	Patient() : Person()
+	{
+		this->ID="NULL";
+		this->wardNumber=0;
+		this->bedNumber=0;
+		
+	}
+	void setAdmitDate(int day, int month, int year)
+	{
+		this->admitDate.setDate(day,month,year);
+	}
+	void setID(string ID)
+	{
+		this->ID=ID;
+	}
+	string getID()
+	{
+		return(this->ID);
+	}
+	void setWardNumber(unsigned short wardNumber)
+	{
+		if(wardNumber > 0)
+		{
+			this->wardNumber=wardNumber;
+		}
+		else
+		{
+			this->wardNumber=0;
+		}
+	}
+	unsigned short getWardNumber()
+	{
+		return(this->wardNumber);
+	}
+	void setBedNumber(unsigned short bedNumber)
+	{
+		if(bedNumber > 0)
+		{
+			this->bedNumber=bedNumber;
+		}
+		else
+		{
+			this->bedNumber=0;
+		}
+	}
+	unsigned short getBedNumber()
+	{
+		return(this->bedNumber);
+	}
+	void input()
+	{
+		cin.ignore();
+		cout<<"\n\n"<<"\t\t\t\t\tEnter patient's ID : ";
+		getline(cin,this->ID);
+		this->Person::input();
+		cout<<"\t\t\t\t\tEnter Ward No. ";
+		cin>>this->wardNumber;
+		cout<<"\t\t\t\t\tEnter Bed No. ";
+		cin>>this->bedNumber;
+		cout<<"\t\t\t\t\tInput Date \n";
+		this->admitDate.inputDate();
+	}
+	void print()
+	{
+		cout<<"\t\t\t\t\t***********************************************\n";
+		cout<<"\t\t\t\t\tPatient ID : "<<this->getID()<<"\n";
+		Person::print();
+		cout<<"\t\t\t\t\tWard Number : "<<this->getWardNumber()<<"\n";
+		cout<<"\t\t\t\t\tBed Number : "<<this->getBedNumber()<<"\n";
+		cout<<"\t\t\t\t\tAdmit Date : "<<this->admitDate<<"\n";
+		cout<<"\t\t\t\t\t***********************************************\n";
+		cout<<endl;
+	}
+	void write(ofstream& out)
+	{
+		out<<this->getID()<<",";
+		out<<this->getWardNumber()<<",";
+		out<<this->getBedNumber()<<",";
+		out<<this->admitDate<<",";
+		Person::write(out);
+		out<<endl;
+	}
+	void read(ifstream& in)
+	{
+		string temp;
+		getline(in,this->ID,',');
+		
+		getline(in,temp,',');
+		this->wardNumber=stoi(temp);
+	
+		getline(in,temp,',');
+		this->bedNumber=stoi(temp);
+	
+		this->admitDate.read(in);
+		
+		Person::read(in);
+	}
+	
+	
+	int searchG(vector<Patient> &p , string id)
+	{
+		for(int i=0;i<p.size();i++)
+		{
+			if(p[i].ID == id)
+			{
+				return(i);
+			}
+		}
+	}
+	void menu()
+	{
+		
+	}
+	
+	
+	
+};
+void doctor()  //OUTPUT MANIPULATION
+{
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                     _____   ______   ______ _________ ______  ______                  |##\n"
+		<<"\t\t\t\t\t##|                    |  __ \\ /  __  \\ / ____/|____ ____/  __  \\|  __  \\                 |##\n"
+		<<"\t\t\t\t\t##|                    | |  | |  |  |  | |         | |  |  |  |  | |__)  |                |##\n"
+		<<"\t\t\t\t\t##|                    | |  | |  |  |  | |         | |  |  |  |  |  __  /                 |##\n"
+		<<"\t\t\t\t\t##|                    | |__| |  |__|  | |_____    | |  |  |__|  | |  \\ \\                 |##\n"
+		<<"\t\t\t\t\t##|                    |_____/ \\______/ \\______\\   |_|   \\______/|_|   \\_\\                |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n\n\n";
+}
+class Doctor : public Person
+{
+private:
+	string specialization;
+	Date joiningDate;
+	Date leavingDate;
+	Login doctorLogin;
+	int *temp;
+public:	
+	Doctor() : Person()
+	{
+		this->specialization="NULL";
+		
+	}
+	Login getLogin()
+	{
+		return(this->doctorLogin);
+	}
+	void setSpecialization(string specialization)
+	{
+		this->specialization=specialization;
+	}
+	string getSpecialization()
+	{
+		return(this->specialization);
+	}
+	void input()
+	{
+		cin>>this->doctorLogin;
+		this->Person::input();
+		cin.ignore();
+		cout<<"\t\t\t\t\tSpecialization : ";
+		getline(cin,this->specialization);
+		cout<<"\t\t\t\t\tInput Joining Date \n";
+		this->joiningDate.inputDate();
+	}
+	void print()
+	{
+		cout<<"\t\t\t\t\t***********************************************\n";
+		this->doctorLogin.print();
+		cout<<"\t\t\t\t\tSpecialization : "<<this->specialization<<"\n";
+		this->Person::print();
+		cout<<"\t\t\t\t\tJoining Date : "<<this->joiningDate<<"\n";
+		cout<<"\t\t\t\t\t***********************************************\n";
+	}
+	void read(ifstream& in)
+	{
+		this->doctorLogin.read(in);
+		
+		getline(in,this->specialization,',');
+		this->joiningDate.read(in);
+		this->leavingDate.read(in);
+		
+		Person::read(in);
+	}
+	void write(ofstream& out)
+	{
+		this->doctorLogin.write(out);
+		out<<this->getSpecialization()<<",";
+		out<<this->joiningDate<<",";
+		out<<this->leavingDate<<",";
+		Person::write(out);
+		out<<endl;
+	}
+
+	int searchG(vector<Doctor> &d , string id)
+	{
+		for(int i=0;i<d.size();i++)
+		{
+			if(d[i].doctorLogin.getUserName() == id)
+			{
+				return(i);
+			}
+		}
+	}
+	void menu()
+	{
+		short choice;
+		
+		while(true)
+		{
+			system("CLS");
+			doctor();
+			cout<<"\t\t\t\t\t1. View Profile\n"
+				<<"\t\t\t\t\t2. Patients details \n"
+				<<"\t\t\t\t\t3. Appointments\n"
+				<<"\t\t\t\t\t4. Go Back\n"
+				<<"\t\t\t\t\tEnter your choice : ";
+			cin>>choice;
+			switch(choice)
+			{
+				case 1:
+					{
+						this->print();
+					}
+					break;
+				case 2:
+					records<Patient>();
+					break;
+				case 3:
+					doctor();
+					records<Appointment>();
+					cout<<"\t\t\t\t\t";
+					system("PAUSE");
+					break;
+				case 4:
+					return;
+				default:
+					cout<<"You Enter invalid choice \n";
+			}
+		}
+	}
+
+};
+void recep()		//OUTPUT MANIPULATION
+{
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                             ______  ______ ______ ______ _____                        |##\n"
+		<<"\t\t\t\t\t##|                            |  __  \\|  ____/  ____/  ____/  __ \\                       |##\n"
+		<<"\t\t\t\t\t##|                            | |__)  | |__    |      |__  | |__) |                      |##\n"
+		<<"\t\t\t\t\t##|                            |  __  /   __|   |       __| |  ___/                       |##\n"
+		<<"\t\t\t\t\t##|                            | |  \\ \\  |____  |____  |____| |                           |##\n"
+		<<"\t\t\t\t\t##|                            |_|   \\_\\______\\______\\______|_|    ......                 |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n\n\n";
+}
+class Receptionist : public Person
+{
+private:
+	string qualifications;
+	Date joiningDate; 
+	Date leavingDate;
+	Login receptionistLogin;
+public:
+	
+	Receptionist() : Person()
+	{
+		this->qualifications="NULL";
+	
+	}
+	Login getLogin()
+	{
+		return(this->receptionistLogin);
+	}
+	void setQualifications(string qualifications)
+	{
+		this->qualifications=qualifications;
+	}
+	string getQualifications()
+	{
+		return(this->qualifications);
+	}
+	void input()
+	{
+		cin>>this->receptionistLogin;
+		this->Person::input();
+		cin.ignore();
+		cout<<"\t\t\t\t\tQualifications : ";
+		getline(cin,this->qualifications);
+		cout<<"\t\t\t\t\tInput Joining Date \n";
+		this->joiningDate.inputDate();
+	}
+	void print()
+	{
+		cout<<"\t\t\t\t\t***********************************************\n";
+		this->receptionistLogin.print();
+		this->Person::print();
+		cout<<"\t\t\t\t\tQualifications : "<<this->qualifications<<"\n";
+		cout<<"\t\t\t\t\tJoining Date :"<<this->joiningDate<<"\n";
+		cout<<"\t\t\t\t\t***********************************************\n";
+	}
+	void write(ofstream& out)
+	{
+		this->receptionistLogin.write(out);
+		out<<this->getQualifications()<<",";
+		out<<this->joiningDate<<",";
+		out<<this->leavingDate<<",";
+		Person::write(out);
+		out<<endl;
+	}
+	void read(ifstream& in)
+	{
+		this->receptionistLogin.read(in);
+		
+		getline(in,this->qualifications,',');
+		this->joiningDate.read(in);
+		this->leavingDate.read(in);
+		
+		Person::read(in);
+	}
+	int searchG(vector<Receptionist> &r , string id)
+	{
+		for(int i=0;i<r.size();i++)
+		{
+			if(r[i].receptionistLogin.getUserName() == id)
+			{
+				return(i);
+			}
+		}
+	}
+	void menu()
+	{
+		short choice;
+		while(true)
+		{
+			system("CLS");
+			recep();
+			cout<<"\t\t\t\t1. View Profile\n"
+				<<"\t\t\t\t2. Patients details \n"
+				<<"\t\t\t\t3. Appointments\n"
+				<<"\t\t\t\t4. Go Back\n"
+				<<"\t\t\t\tEnter your choice : ";
+			cin>>choice;
+			switch(choice)
+			{
+				case 1:
+					{
+						this->print();
+						break;
+					}
+					break;
+				case 2:
+					records<Patient>();
+					break;
+				case 3:
+					records<Appointment>();
+					break;
+				case 4:
+					return;
+				default:
+					cout<<"You Enter invalid choice \n";
+			}
+		}
+	}
+};
+void admin()
+{
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                                    _____  __  __ _______ _   _                        |##\n"
+		<<"\t\t\t\t\t##|                             /\\    |  __ \\|  \\/  |___ ___| \\ | |                       |##\n"
+		<<"\t\t\t\t\t##|                            /  \\   | |  | | \\  / |  | |  |  \\| |                       |##\n"
+		<<"\t\t\t\t\t##|                           / /\\ \\  | |  | | |\\/| |  | |  |     |                       |##\n"
+		<<"\t\t\t\t\t##|                          / ____ \\ | |__| | |  | |__|_|__| |\\  |                       |##\n"
+		<<"\t\t\t\t\t##|                         /_/    \\_\\|_____/|_|  |_|_______|_| \\_|                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n\n\n";
+}
+class Admin
+{
+private:
+	Login adminLogin;
+public:
+	Admin()
+	{
+		in.open("Admin Password.csv");
+		this->adminLogin.read(in);
+		in.close();
+		
+	}
+	Login getLogin()
+	{
+		return(this->adminLogin);
+	}
+	void updateAdminLogin()
+	{
+		cout<<"\t\t\t\t\tNow you can Change your User Name as well as Password\n";
+		cin>>this->adminLogin;
+		out.open("Admin Password.csv");
+		this->adminLogin.write(out);
+		out.close();
+	}
+	void read(ifstream& in)
+	{
+		this->adminLogin.read(in);
+	}
+	void print()
+	{
+		cout<<this->adminLogin.getUserName()<<endl;
+		cout<<this->adminLogin.getPassword()<<endl;
+	}
+	void write(ofstream& out){}
+	void menu()
+	{
+		short choice;		
+		while(true)
+		{
+			system("CLS");
+			admin();
+			cout<<"\t\t\t\t\t1. Patients details \n"
+				<<"\t\t\t\t\t2. Receptionist details\n"
+				<<"\t\t\t\t\t3. Doctors details\n"
+				<<"\t\t\t\t\t4. Appointments\n"
+				<<"\t\t\t\t\t5. Change UserName and Password\n"
+				<<"\t\t\t\t\t6. Go back\n\n"
+				<<"\t\t\t\t\tEnter your choice : ";
+			cin>>choice;
+			switch(choice)
+			{
+				case 1:
+					records<Patient>();
+					break;
+				case 2:
+					records<Receptionist>();
+					break;
+				case 3:
+					records<Doctor>();
+					break;
+				case 4:
+					records<Appointment>();
+					break;
+				case 5:
+					this->updateAdminLogin();
+					break;
+				case 6:
+					return;
+				default:
+					cout<<"\t\t\t\t\tYou Enter invalid choice \n";
+			}
+		}
+	}
+	
+};
+
+// template class for general operations on data
+template<class T>
+class List
+{
+private:
+	vector<T> t;
+public:
+	List()
+	{
+		//Reading Data from file into Vector
+		if(typeid(T) == typeid(Patient))
+		{
+			in.open("PatientsData.csv");
+		}
+		else if(typeid(T)==typeid(Doctor))
+		{
+			in.open("DoctorsData.csv");
+		}
+		else if(typeid(T)==typeid(Receptionist))
+		{
+			in.open("ReceptionistsData.csv");
+		}
+		else if(typeid(T) == typeid(Appointment))
+		{
+			in.open("Appointments.csv");
+		}
+		else
+		{
+			T pat;
+			t.push_back(pat);
+			in.close();
+		}
+		
+		if(in.is_open() && typeid(T)!=typeid(Admin))
+		{
+			//cout<<"File is Opened\n";
+			T pat;
+			pat.read(in);
+			while(!in.eof())
+			{
+				//cout<<"!";system("PAUSE");
+				try{
+					t.push_back(pat);
+				}
+				catch(bad_alloc &bd)
+				{
+					cout<<"Bad Allocation accur\n";
+					cout<<bd.what()<<endl;
+				}
+				pat.read(in);
+			}
+			in.close();
+		}
+		else
+		{
+			cout<<"\t\t\t\t\tFile not Found to Load Data\n";
+		}
+	}
+	
+	void login()
+	{
+	Login l;
+	system("CLS");
+	bool flag;
+	char choice;
+	if(typeid(T)==typeid(Doctor))
+	{
+		doctor();
+	}
+	else if(typeid(T)==typeid(Receptionist))
+	{
+		recep();
+	}
+	else
+	{
+		admin();
+	}
+	
+	do{
+		cin>>l;
+	
+		for(int i=0;i<t.size();i++)
+		{
+			if(t[i].getLogin() == l)
+			{
+				cout<<"\t\t\t\t\tLogin Successfully\n\t\t\t\t\t";
+				system("PAUSE");
+				t[i].menu();
+				flag=true;
+				break;
+			}
+		}
+		if(!flag)
+		{
+			cout<<"\t\t\t\t\tUserName or Password is wrong\n";
+			cout<<"\t\t\t\t\tDo you want to try again (Y or N) : ";
+			cin>>choice;
+		}
+	
+		}while(choice == 'y' || choice == 'Y');
+	}
+	void add_record()
+	{
+		add();
+		T temp;
+		temp.input(); 
+		t.push_back(temp);
+		cout<<"\t\t\t\t\tRecord Added\n";
+		cout<<"\t\t\t\t\t";
+		system("PAUSE");	
+	}
+	void delete_record()
+	{
+		_delete();
+		string temp;
+		T tt;
+		if(typeid(T) == typeid(Appointment))
+		cout<<"\t\t\t\t\tEnter Appointment number to Delete it : ";
+		else
+		cout<<"\t\t\t\t\tEnter ID/UserName to delete the Record : ";
+		cin>>temp;
+		int i=tt.searchG(t,temp);
+		if(i!=t.size())
+		{
+			t.erase(t.begin()+i);
+	
+			cout<<"\t\t\t\t\tRecord Successfully Deleted\n";
+		}
+		else
+		{
+			cout<<"\t\t\t\t\tRecord not found in the File\n";
+		}
+	
+		cout<<"\t\t\t\t\t";
+		system("PAUSE");
+	}
+	void update_record()
+	{
+		update();
+		string temp;
+		T tt;
+		if(typeid(T) == typeid(Appointment))
+		cout<<"\t\t\t\t\tEnter Appointment number to Update it : ";
+		else
+		cout<<"\t\t\t\t\tEnter ID/UserName to delete the Record : ";
+		cin>>temp;
+		int i=tt.searchG(t,temp);
+		if(i!=t.size())
+		{
+			cout<<"\t\t\t\t\tInput the Updated Data \n";
+			t[i].input();
+			cout<<"\t\t\t\t\tRecord Updated successfully \n";
+		}
+		else
+		{
+			cout<<"\t\t\t\t\tRecord not found in the File\n";
+		}
+	
+		cout<<"\t\t\t\t\t";
+		system("PAUSE");
+	
+	}
+	void sortA()
+	{
+		T temp;
+		for(int i=0;i<t.size();i++)
+		{
+			for(int j=0;j<t.size()-1;j++)
+			{
+				if(t[j]>t[j+1])
+				{
+					temp=t[j];
+					t[j]=t[j+1];
+					t[j+1]=temp;
+				}
+			}
+		}
+		cout<<"\t\t\t\t\tSorting successfully\n\t\t\t\t\t";
+		system("PAUSE");
+		this->view_records();
+	}
+	void sortD()
+	{
+		T temp;
+		for(int i=0;i<t.size();i++)
+		{
+			for(int j=0;j<t.size()-1;j++)
+			{
+				if(t[j]<t[j+1])
+				{
+					temp=t[j];
+					t[j]=t[j+1];
+					t[j+1]=temp;
+				}
+			}
+		}
+		cout<<"\t\t\t\t\tSorting successfully\n\t\t\t\t\t";
+		system("PAUSE");
+		this->view_records();
+	}
+	void search_record()
+	{
+		search();
+		string temp;
+		T tt;
+		if(typeid(T) == typeid(Appointment))
+		cout<<"\t\t\t\t\tEnter Appointment number to search : ";
+		else
+		cout<<"\t\t\t\t\tEnter ID/UserName to delete the Record : ";
+		cin>>temp;
+		int i=tt.searchG(t,temp);
+		if(i!=t.size())
+		{
+			t[i].print();
+		}
+		else
+		{
+			cout<<"Oops! This record is not exists \n";
+		}
+		cout<<"\t\t\t\t\t";
+		system("PAUSE");
+	}
+	void view_records()
+	{
+		view();
+		if(typeid(T)!=typeid(Appointment))
+		{
+			cout<<"\t\t\t\t\t***********************************************************************************"<<endl;
+			cout<<"\t\t\t\t\tSr no\t\tName\t\t\tAge\t\tGender\t\tBlood Group\n";
+			cout<<"\t\t\t\t\t***********************************************************************************"<<endl;
+			cout<<"\t\t\t\t\t***********************************************************************************"<<endl;
+		} 
+		for(int i=0;i<t.size();i++)
+		{
+			cout<<"\t\t\t\t\t"<<i+1<<"\t\t";
+			t[i].printG();
+		}
+		cout<<"\t\t\t\t\tTotal records:"<<t.size()<<endl;
+		cout<<"\t\t\t\t\t";
+		system("PAUSE");
+	}
+	~List()
+	{
+		//Writing Data into file from Vector
+		if(typeid(T) == typeid(Patient))
+		{
+			out.open("PatientsData.csv");
+		}
+		else if(typeid(T)==typeid(Doctor))
+		{
+			out.open("DoctorsData.csv");
+		}
+		else if(typeid(T)==typeid(Receptionist))
+		{
+			out.open("ReceptionistsData.csv");
+		}
+		else if(typeid(T) == typeid(Appointment))
+		{
+			out.open("Appointments.csv");
+		}
+		if(out.is_open())
+		cout<<"Dectructor";
+		for(int i=0;i<t.size();i++)
+		{
+			t[i].write(out);
+		}
+		out.close();
+	}
+};
+
+void record()		//OUTPUT MANIPULATION
+{
+	cout<<"\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                       ______  ______ ______ ______  ______  ______                    |##\n"
+		<<"\t\t\t\t\t##|                      |  __  \\|  ____/  ____/  __  \\|  __  \\|  __  \\                   |##\n"
+		<<"\t\t\t\t\t##|                      | |__)  | |__    |      |  |  | |__)  | |  |  |                  |##\n"
+		<<"\t\t\t\t\t##|                      |  __  /   __|   |      |  |  |  __  /  |  |  |                  |##\n"
+		<<"\t\t\t\t\t##|                      | |  \\ \\  |____  |____  |__|  | |  \\ \\  |__|  |                  |##\n"
+		<<"\t\t\t\t\t##|                      |_|   \\_\\______\\______\\______/|_|   \\_\\______/                   |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n\n\n";
+}
+
+// template for operations on records
+template<class Item>
+void records()
+{
+	short choice;
+	List<Item> p;
+	while(true)
+	{	
+		system("CLS");
+		record();
+		if(typeid(Item)==typeid(Appointment))
+		{
+			cout<<"\t\t\t\t\t1. Set Appointment\n"
+				<<"\t\t\t\t\t2. Delete Appointment\n"
+				<<"\t\t\t\t\t3. Update Appointment\n"
+				<<"\t\t\t\t\t4. Search Appointment\n"
+				<<"\t\t\t\t\t5. View Appointments\n"
+				<<"\t\t\t\t\t6. Sort Appointment\n"
+				<<"\t\t\t\t\t7. Go back\n"
+				<<"\t\t\t\t\tEnter your choice : ";
+		}
+		else
+		{
+			cout<<"\t\t\t\t\t1. Add Record\n"
+				<<"\t\t\t\t\t2. Delete Record\n"
+				<<"\t\t\t\t\t3. Update Record\n"
+				<<"\t\t\t\t\t4. Search Record\n"
+				<<"\t\t\t\t\t5. View Records\n"
+				<<"\t\t\t\t\t6. Sort Record\n"
+				<<"\t\t\t\t\t7. Go back\n"
+				<<"\t\t\t\t\tEnter your choice : ";
+		}
+		
+		cin>>choice;
+		switch(choice)
+		{
+			case 1:
+				p.add_record();
+				break;
+			case 2:
+				p.delete_record();
+				break;
+			case 3:
+				p.update_record();
+				break;
+			case 4:
+				p.search_record();
+				break;
+			case 5:
+				p.view_records();
+				break;
+			case 6:
+				{
+					cout<<"\t\t\t\t\t1. Ascending\n"
+						<<"\t\t\t\t\t2. Descending\n"
+						<<"\t\t\t\t\tEnter Your Choice : ";
+					cin>>choice;
+					if(choice==1)
+					p.sortA();
+					else if(choice==2)
+					p.sortD();
+					else
+					cout<<"\t\t\t\t\tInvalid choice\n";
+				}
+				break;
+			case 7:
+				return;
+			default:
+				cout<<"You entered invalid choice \n";
+		}
+	}
+}
+
+//template function for call the login function for different classes
+template<class Item>
+void loginCall()
+{
+	List<Item> I;
+	I.login();
+}
+
+void welcome()		//OUTPUT MANIPULATION
+{
+	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t#############################################################################################\n"
+		<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                                           		                                  |##\n"
+		<<"\t\t\t\t\t##|                   _    _ ______ _      ______ _______  __  __ ______                  |##\n"
+		<<"\t\t\t\t\t##|                  | |  | |  ____| |    / _____/  ___  \\|  \\/  |  ____|                 |##\n"
+		<<"\t\t\t\t\t##|                  | |  | | |__  | |   | |       |   |  | \\  / | |__                    |##\n"
+		<<"\t\t\t\t\t##|                  | |/\\| |  __| | |   | |       |   |  | |\\/| |  __|                   |##\n"
+		<<"\t\t\t\t\t##|                  | /  \\ | |____| |___| |_____  |___|  | |  | | |____                  |##\n"
+		<<"\t\t\t\t\t##|                  |__/\\__|______|______\\______\\_______/|_|  |_|______|                 |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                              TO HOSPITAL MANAGEMENT SYSTEM                            |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                                       |##\n"
+		<<"\t\t\t\t\t##|                                                                   BY:  19011519-094   |##\n"
+		<<"\t\t\t\t\t##|                                                                        19011519-135   |##\n"
+		<<"\t\t\t\t\t##|                                                                        19011519-146   |##\n"
+		<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+		<<"\t\t\t\t\t#############################################################################################\n\n\n\n\t\t\t\t\t";
+	system("PAUSE");
+	system("cls");
+}
+void start()
+{ 
+	welcome();
+	short choice;
+		
+	while(true)
+	{
+		system("CLS");
+		cout<<"\n\n\n\n\n\t\t\t\t\tPlease,  Choose from the following Options:\n\n"
+			<<"\t\t\t\t\t#############################################################################################\n"
+			<<"\t\t\t\t\t## _______________________________________________________________________________________ ##\n"
+			<<"\t\t\t\t\t##|                                HOSPITAL MANAGEMENT SYSTEM                             |##\n"
+			<<"\t\t\t\t\t##|                                           		                                  |##\n"
+			<<"\t\t\t\t\t##|                        _       _______   ______  _______ _   _                        |##\n"
+			<<"\t\t\t\t\t##|                       | |     /  ___  \\ / _____\\|___ ___| \\ | |                       |##\n"
+			<<"\t\t\t\t\t##|                       | |    |  |   |  | |         | |  |  \\| |                       |##\n"
+			<<"\t\t\t\t\t##|                       | |    |  |   |  | |  |---|  | |  |     |                       |##\n"
+			<<"\t\t\t\t\t##|                       | |____|  |___|  | |____| |__|_|__| |\\  |                       |##\n"
+			<<"\t\t\t\t\t##|                       |_______\\_______/ \\______/|_______|_| \\_|                       |##\n"
+			<<"\t\t\t\t\t##|                                                                                       |##\n"
+			<<"\t\t\t\t\t##|                                                                                       |##\n"
+			<<"\t\t\t\t\t##|                                                                                       |##\n"
+			<<"\t\t\t\t\t##|                    1. Admin         2. Doctor         3. Receptionist                 |##\n"
+			<<"\t\t\t\t\t##|                                                                                       |##\n"
+			<<"\t\t\t\t\t##|                                                                                       |##\n"
+			<<"\t\t\t\t\t##|                                     4. Exit                                           |##\n"
+			<<"\t\t\t\t\t##|_______________________________________________________________________________________|##\n"
+			<<"\t\t\t\t\t#############################################################################################\n\n\n\n\t\t\t\t";
+		cout<<"\tEnter your choice : ";
+		cin>>choice;
+		switch(choice)
+		{
+			case 1:
+				loginCall<Admin>();
+				break;
+			case 2:
+		
+				loginCall<Doctor>();
+				break;
+			case 3:
+				loginCall<Receptionist>();
+				break;
+			case 4:
+				exit(0);
+			default: 
+				cout<<"Invalid input\n";
+		}
+	}
+}
+
+//Main function 
+int main()
+{
+	start();
+	return(0);
+}
